@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Tamagotchi.Core.Models
 {
-    abstract public class APet
+    public class Stats
     {
-        private string name;
-        private Emotions emotion;
-        
+        int starve { get; set; }
+        int energy { get; set; }
+        int health { get; set; }
     }
 }
