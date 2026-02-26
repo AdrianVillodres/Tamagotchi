@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tamagotchi.Core.Enumerations
+namespace Tamagotchi.Core.Models
 {
-    internal class EEMotions
+    public enum Emotions
     {
+        happy,
+        sad,
+        angry,
+        tired,
+        sick
     }
 }
