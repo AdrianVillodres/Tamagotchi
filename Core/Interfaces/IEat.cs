@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Tamagotchi.Core.Interfaces
 {
-    internal interface IEat
+    public interface IEat
     {
+        void Eat(string eat);
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Tamagotchi.Core.Interfaces
 {
-    internal interface IPlay
+    public interface IPlay
     {
+        void Play(string emotion);
     }
 }
