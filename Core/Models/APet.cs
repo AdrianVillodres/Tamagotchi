@@ -8,8 +8,15 @@ namespace Tamagotchi.Core.Models
 {
     abstract public class APet
     {
-        private string name;
-        private Emotions emotion;
-        
+        private string Name { get; set; }
+        private Emotions Emotion { get; }
+        private Stats Stats { get; }
+
+        protected APet(string name, Emotions emotion, Stats stats)
+        {
+            Name = name;
+            Emotion = emotion;
+            Stats = stats;
+        }
     }
 }
