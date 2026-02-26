@@ -8,8 +8,13 @@ namespace Tamagotchi.Core.Models
 {
     public class Stats
     {
-        int starve { get; set; }
-        int energy { get; set; }
-        int health { get; set; }
+        int Starve { get; set; }
+        int Energy { get; set; }
+        int Health { get; set; }
+
+        public Stats(int starve, int energy, int health)
+        {
+
+        }
     }
 }
