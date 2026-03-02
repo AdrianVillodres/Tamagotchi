@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tamagotchi.Core.Models
+namespace Tamagotchi.Core.Interfaces
 {
-    public enum TypeFood
+    internal interface IPlay
     {
-        Meal = 20,
-        Snack = 5
     }
 }
