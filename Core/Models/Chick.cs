@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Tamagotchi.Core.Models
 {
-    public enum Emotions
+    public class Chick : APet
     {
-        happy,
-        sad,
-        angry,
-        tired,
-        sick
+        public Chick(string name, Emotions emotion, Stats stats) : base(name, emotion, stats)
+        {
+
+        }
     }
 }

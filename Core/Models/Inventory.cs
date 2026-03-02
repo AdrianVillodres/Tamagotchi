@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Tamagotchi.Core.Models
 {
-    public enum Emotions
+    public class Inventory
     {
-        happy,
-        sad,
-        angry,
-        tired,
-        sick
+        private Item[] items = new Item[5];
+
+        public Inventory(Item[] items)
+        {
+            this.items = items;
+        }
     }
 }

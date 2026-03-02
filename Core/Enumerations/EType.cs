@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace Tamagotchi.Core.Models
 {
-    public enum Emotions
+    public enum Types
     {
-        happy,
-        sad,
-        angry,
-        tired,
-        sick
+        Meal,
+        Snack
     }
 }
