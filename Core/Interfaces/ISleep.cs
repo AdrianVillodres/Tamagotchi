@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tamagotchi.Core.Interfaces
 {
-    public interface ISleep
+    public interface ISleep 
     {
         void Sleep();
     }
