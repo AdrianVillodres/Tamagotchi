@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tamagotchi.Core.UI
 {
-    internal class UIConfig
+    static class UIConfig
     {
     }
 }

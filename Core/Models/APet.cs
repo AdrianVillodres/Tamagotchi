@@ -7,8 +7,10 @@ using Tamagotchi.Core.Interfaces;
 
 namespace Tamagotchi.Core.Models
 {
-    public abstract class APet : IEat
+    public abstract class APet : IEat, IPlay, ISleep
     {
+        const int EnergyConsumed = 10;
+        const int EnergyHealed = 10;
         public string Name { get; set; }
         public Emotions Emotion { get; }
         public Stats Stats { get; }
@@ -23,6 +25,16 @@ namespace Tamagotchi.Core.Models
         public void Eat(Item item)
         {
             Stats.Starve += (int)item.Type.TypeFood;
+        }
+
+        public void Play()
+        {
+            Stats.Energy -= EnergyConsumed;
+        }
+
+        public void Sleep()
+        {
+            Stats.Energy += EnergyHealed;
         }
     }
 }

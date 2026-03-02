@@ -6,7 +6,7 @@ namespace Tamagotchi.Core.UI
     {
         public static void Main()
         {
-            Stats stats = new Stats(100, 100, 100);
+            Stats stats = new Stats(100, 100, 0);
             Cat taiga = new Cat("Taiga", Emotions.happy, stats);
             Food healthyBar = new Food("HealthyBar", TypeFood.Snack);
             Food animalFood = new Food("AnimalFood", TypeFood.Meal);
