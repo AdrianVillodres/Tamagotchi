@@ -8,21 +8,11 @@ namespace Tamagotchi.Core.Models
 {
     public class Inventory
     {
-        Item[] items = new Item[5];
+        private Item[] items = new Item[5];
 
-        void InventoryAdd()
+        public Inventory(Item[] items)
         {
-
-        }
-
-        void InventoryUse()
-        {
-
-        }
-
-        void InventoryDelete()
-        {
-
+            this.items = items;
         }
     }
 }

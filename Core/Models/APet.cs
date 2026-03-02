@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Tamagotchi.Core.Models
 {
-    abstract public class APet
+    public abstract class APet
     {
-        private string Name { get; set; }
-        private Emotions Emotion { get; }
-        private Stats Stats { get; }
+        protected string Name { get; set; }
+        protected Emotions Emotion { get; }
+        protected Stats Stats { get; }
 
         protected APet(string name, Emotions emotion, Stats stats)
         {

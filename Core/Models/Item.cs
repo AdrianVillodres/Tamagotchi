@@ -8,7 +8,13 @@ namespace Tamagotchi.Core.Models
 {
     public class Item
     {
-        string name;
-        Food type;
+        private string name { get; }
+        private Food type { get;  }
+
+        public Item(string name, Food type)
+        {
+            this.name = name;
+            this.type = type;
+        }
     }
 }
