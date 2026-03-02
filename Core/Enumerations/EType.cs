@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tamagotchi.Core.Models
 {
-    enum Types
+    public enum Types
     {
         Meal,
         Snack
