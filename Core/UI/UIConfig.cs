@@ -9,6 +9,8 @@ namespace Tamagotchi.Core.UI
 {
     static class UIConfig
     {
+        const string Option_ErrorMSG = "Error, must be a natural number between 1 and 4";
+        const string Exit_MSG = "Bye, exiting game...";
         public static void Draw(Cat cat)
         {
 
@@ -107,9 +109,10 @@ namespace Tamagotchi.Core.UI
 
             int option = Int32.Parse(Console.ReadLine());
 
-            while (!ValidateMenu(op))
+            while (!ValidateMenu(option))
             {
-                
+                Console.WriteLine(Option_ErrorMSG);
+                option = Int32.Parse(Console.ReadLine());
             }
 
             return option;
@@ -120,6 +123,25 @@ namespace Tamagotchi.Core.UI
             if (op < 1 || op > 4) return false;
 
             else return true;
+        }
+
+        public static void OptionSelection(int op)
+        {
+            switch (op)
+            {
+                case 1:
+                    //method
+                    return;
+                case 2:
+                    //method
+                    return;
+                case 3:
+                    //method
+                    return;
+                case 4:
+                    Console.WriteLine(Exit_MSG);
+                    return;
+            }
         }
     }
 
