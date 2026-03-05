@@ -6,16 +6,22 @@ namespace Tamagotchi.Core.UI
     {
         public static void Main()
         {
-            Stats stats = new Stats(100, 100, 0);
+            Stats stats = new Stats(50, 50, 0);
             Cat taiga = new Cat("Taiga", Emotions.Happy, stats);
             Food healthyBar = new Food("HealthyBar", TypeFood.Snack);
             Food animalFood = new Food("AnimalFood", TypeFood.Meal);
             Item healtyBar = new Item("HealtyBar", healthyBar);
             Item animalFoodI = new Item("AnimalFood", animalFood);
             Player player = new Player(taiga);
+            int op = 0;
 
-
-            UIConfig.Draw(taiga);
+            while(op != 4)
+            {
+                UIConfig.Draw(taiga);
+                op = UIConfig.ShowMenu();
+                UIConfig.OptionSelection(op, player);
+            }
+            
         }
     }
 }

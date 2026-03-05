@@ -18,5 +18,6 @@ namespace Tamagotchi.Core.Models
         {
             this.items = items;
         }
+
     }
 }

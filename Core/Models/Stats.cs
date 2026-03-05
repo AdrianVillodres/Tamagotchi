@@ -14,9 +14,9 @@ namespace Tamagotchi.Core.Models
 
         public Stats(int starve, int energy, int health)
         {
-            Health = energy + starve / 2;
             Energy = energy;
             Starve = starve;
+            Health = (energy + starve) / 2;
         }
     }
 }
