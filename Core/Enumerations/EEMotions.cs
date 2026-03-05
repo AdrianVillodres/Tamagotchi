@@ -8,10 +8,10 @@ namespace Tamagotchi.Core.Models
 {
     public enum Emotions
     {
-        happy,
-        sad,
-        angry,
-        tired,
-        sick
+        Happy,
+        Sad,
+        Angry,
+        Tired,
+        Sick
     }
 }

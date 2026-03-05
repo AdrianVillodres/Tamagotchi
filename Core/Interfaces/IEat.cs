@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tamagotchi.Core.Models;
 
-namespace Tamagotchi.Core.Models
+namespace Tamagotchi.Core.Interfaces
 {
-    public enum TypeFood
+    public interface IEat
     {
-        Meal = 20,
-        Snack = 5
+        void Eat(Item item);
     }
 }

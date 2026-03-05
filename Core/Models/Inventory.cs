@@ -8,8 +8,12 @@ namespace Tamagotchi.Core.Models
 {
     public class Inventory
     {
-        private Item[] items = new Item[5];
+        public Item[] items = new Item[5];
 
+        public Inventory()
+        {
+           
+        }
         public Inventory(Item[] items)
         {
             this.items = items;

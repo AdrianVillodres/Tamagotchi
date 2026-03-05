@@ -8,12 +8,13 @@ namespace Tamagotchi.Core.Models
 {
     public class Player
     {
-        private Inventory inventory { get; }
-        private APet pet { get; set; }
+        public Inventory Inventory { get; }
+        public APet Pet { get; set; }
 
-        public Player(Inventory inventory, APet pet)
+        public Player(APet pet)
         {
-            this.pet = pet;
+            this.Pet = pet;
+            Inventory = new Inventory();
         }
 
         void InventoryAdd()
