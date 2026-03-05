@@ -14,8 +14,8 @@ namespace Tamagotchi.Core.UI
             Item animalFoodI = new Item("AnimalFood", animalFood);
             Player player = new Player(taiga);
             int op = 0;
-
-            while(op != 4)
+            player.Inventory.items[0] = healtyBar;
+            while (op != 4)
             {
                 UIConfig.Draw(taiga);
                 op = UIConfig.ShowMenu();
