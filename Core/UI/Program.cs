@@ -14,7 +14,8 @@ namespace Tamagotchi.Core.UI
             Item animalFoodI = new Item("AnimalFood", animalFood);
             Player player = new Player(taiga);
 
-            UIConfig.GetPetArt(taiga.Emotion.ToString());
+
+            UIConfig.Draw(taiga);
         }
     }
 }
