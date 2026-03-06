@@ -12,14 +12,17 @@ namespace Tamagotchi.Core.Models
         const int EnergyConsumed = 10;
         const int EnergyHealed = 10;
         public string Name { get; set; }
-        public Emotions Emotion { get; }
+        public Emotions Emotion { get; set; }
         public Stats Stats { get; }
+
+        public int SnackCount { get; set; }
 
         protected APet(string name, Emotions emotion, Stats stats)
         {
             Name = name;
             Emotion = emotion;
             Stats = stats;
+            SnackCount = 0;
         }
 
         public void Eat(Item item)
