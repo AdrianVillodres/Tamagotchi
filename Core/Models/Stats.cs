@@ -10,13 +10,14 @@ namespace Tamagotchi.Core.Models
     {
         public int Starve { get; set; }
         public int Energy { get; set; }
-        public int Health { get; set; }
+        public int Health{ get { return (Energy + Starve) / 2; }
+        }
 
-        public Stats(int starve, int energy, int health)
+
+        public Stats(int starve, int energy)
         {
             Energy = energy;
             Starve = starve;
-            Health = (energy + starve) / 2;
         }
     }
 }

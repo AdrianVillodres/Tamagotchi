@@ -6,7 +6,7 @@ namespace Tamagotchi.Core.UI
     {
         public static void Main()
         {
-            Stats stats = new Stats(50, 50, 0);
+            Stats stats = new Stats(50, 50);
             Cat taiga = new Cat("Taiga", Emotions.Happy, stats);
             Food healthyBar = new Food("HealthyBar", TypeFood.Snack);
             Food animalFood = new Food("AnimalFood", TypeFood.Meal);
@@ -15,6 +15,10 @@ namespace Tamagotchi.Core.UI
             Player player = new Player(taiga);
             int op = 0;
             player.Inventory.items[0] = healtyBar;
+            player.Inventory.items[1] = healtyBar;
+            player.Inventory.items[2] = healtyBar;
+            player.Inventory.items[3] = animalFoodI;
+            player.Inventory.items[4] = animalFoodI;
             while (op != 4)
             {
                 UIConfig.Draw(taiga);

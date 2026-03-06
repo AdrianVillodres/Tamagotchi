@@ -172,7 +172,6 @@ namespace Tamagotchi.Core.UI
         {
             int option = 0;
             bool validInput = false;
-            Console.WriteLine(Eat_MSG);
             do
             {
                 Console.WriteLine(Eat_MSG);
@@ -180,7 +179,7 @@ namespace Tamagotchi.Core.UI
                 {
                     option = int.Parse(Console.ReadLine());
 
-                    if (ValidateNumber(option, MinMenuValue, MaxMenuValue))
+                    if (ValidateNumber(option, MinEatValue, MaxEatValue))
                     {
                         validInput = true;
                     }
@@ -210,7 +209,8 @@ namespace Tamagotchi.Core.UI
                         if (item != null && item.Type.TypeFood == TypeFood.Meal)
                         {
                             player.Pet.Eat(item);
-                            player.Inventory.items[i] = null; 
+                            player.Inventory.items[i] = null;
+                            player.Pet.SnackCount = 0;
                             Console.WriteLine($"{item.Name} given to pet!");
                             foundMeal = true;
                             break;
@@ -228,6 +228,15 @@ namespace Tamagotchi.Core.UI
                         if (item != null && item.Type.TypeFood == TypeFood.Snack)
                         {
                             player.Pet.Eat(item);
+                            player.Pet.SnackCount += 1;
+                            if(player.Pet.SnackCount <= 3)
+                            {
+                                player.Pet.Emotion = Emotions.Happy;
+                            }
+                            else
+                            {
+                                player.Pet.Emotion = Emotions.Sick;
+                            }
                             player.Inventory.items[i] = null;
                             Console.WriteLine($"{item.Name} given to pet!");
                             foundSnack = true;
@@ -242,8 +251,6 @@ namespace Tamagotchi.Core.UI
                     Console.WriteLine("Invalid option.");
                     return;
             }
-
-            //player.Pet.Eat(healtyBar);
         }
     }
 
