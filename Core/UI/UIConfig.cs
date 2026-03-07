@@ -13,6 +13,7 @@ namespace Tamagotchi.Core.UI
         const string Option_ErrorMSG = "Error, must be a natural number between {0} and {1}";
         const string Exit_MSG = "Bye, exiting game...";
         const string Eat_MSG = "Waht do you want to feed the pet?: 1-Meal, 2-Snack";
+        const string Key_MSG = "Press a key to continue";
         const int MinMenuValue = 1;
         const int MaxMenuValue = 4;
         const int MinEatValue = 1;
@@ -157,7 +158,7 @@ namespace Tamagotchi.Core.UI
                     Eat(player);
                     return;
                 case 2:
-                    //Sleep
+                    Sleep(player);
                     return;
                 case 3:
                     //Play
@@ -201,56 +202,68 @@ namespace Tamagotchi.Core.UI
 
             switch (option)
             {
-                case 1: 
+                case 1:
                     bool foundMeal = false;
-                    for (int i = 0; i < player.Inventory.items.Length; i++)
+                    for (int j = 0; j < player.Inventory.items.Length; j++)
                     {
-                        Item item = player.Inventory.items[i];
+                        Item item = player.Inventory.items[j];
                         if (item != null && item.Type.TypeFood == TypeFood.Meal)
                         {
                             player.Pet.Eat(item);
-                            player.Inventory.items[i] = null;
+                            player.Inventory.items[j] = null;
                             player.Pet.SnackCount = 0;
                             Console.WriteLine($"{item.Name} given to pet!");
                             foundMeal = true;
                             break;
                         }
                     }
+
                     if (!foundMeal)
                         Console.WriteLine("No Meal available in inventory!");
-                    return;
+                    break;
 
-                case 2: 
+                case 2:
                     bool foundSnack = false;
-                    for (int i = 0; i < player.Inventory.items.Length; i++)
+                    int i = 0;
+
+                    while (i < player.Inventory.items.Length && !foundSnack)
                     {
                         Item item = player.Inventory.items[i];
+
                         if (item != null && item.Type.TypeFood == TypeFood.Snack)
                         {
                             player.Pet.Eat(item);
                             player.Pet.SnackCount += 1;
-                            if(player.Pet.SnackCount <= 3)
-                            {
+
+                            if (player.Pet.SnackCount <= 3)
                                 player.Pet.Emotion = Emotions.Happy;
-                            }
                             else
-                            {
                                 player.Pet.Emotion = Emotions.Sick;
-                            }
+
                             player.Inventory.items[i] = null;
                             Console.WriteLine($"{item.Name} given to pet!");
                             foundSnack = true;
-                            break;
                         }
+
+                        i++;
                     }
+
                     if (!foundSnack)
                         Console.WriteLine("No Snack available in inventory!");
-                    return;
+                    break;
 
                 default:
                     Console.WriteLine("Invalid option.");
-                    return;
+                    break;
             }
+
+            Console.WriteLine(Key_MSG); // <-- I searched how to do this due to the screen cleaning when it returns to the menu, wich in fact, is a cleaner way to do the menu
+            Console.ReadKey();
+        }
+
+        public static void Sleep(Player player)
+        {
+            player.Pet.Sleep();
         }
     }
 
