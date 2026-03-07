@@ -157,7 +157,7 @@ namespace Tamagotchi.Core.UI
                     Eat(player);
                     return;
                 case 2:
-                    //Sleep
+                    Sleep(player);
                     return;
                 case 3:
                     //Play
@@ -251,6 +251,11 @@ namespace Tamagotchi.Core.UI
                     Console.WriteLine("Invalid option.");
                     return;
             }
+        }
+
+        public static void Sleep(Player player)
+        {
+            player.Pet.Sleep();
         }
     }
 
