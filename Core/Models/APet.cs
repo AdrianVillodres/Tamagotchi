@@ -9,7 +9,7 @@ namespace Tamagotchi.Core.Models
 {
     public abstract class APet : IEat, IPlay, ISleep
     {
-        const int EnergyConsumed = 10;
+        const int StatsConsumed = 10;
         const int EnergyHealed = 10;
         public string Name { get; set; }
         public Emotions Emotion { get; set; }
@@ -17,11 +17,14 @@ namespace Tamagotchi.Core.Models
 
         public int SnackCount { get; set; }
 
+        public bool needsVaccine { get; set; }
+
         protected APet(string name, Stats stats)
         {
             Name = name;
             Stats = stats;
             SnackCount = 0;
+            needsVaccine = false;
         }
 
         public void Eat(Item item)
@@ -32,7 +35,8 @@ namespace Tamagotchi.Core.Models
 
         public void Play()
         {
-            Stats.Energy -= EnergyConsumed;
+            Stats.Energy -= StatsConsumed;
+            Stats.Starve -= StatsConsumed;
             Emotion = Emotions.Happy;
             UpdateEmotion();
         }

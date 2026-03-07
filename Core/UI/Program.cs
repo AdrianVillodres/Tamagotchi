@@ -23,7 +23,7 @@ namespace Tamagotchi.Core.UI
             {
                 UIConfig.Draw(taiga);
                 op = UIConfig.ShowMenu();
-                UIConfig.OptionSelection(op, player);
+                UIConfig.OptionSelection(op, player, animalFoodI, healtyBar);
             }
             
         }

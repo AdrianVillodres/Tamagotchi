@@ -160,7 +160,7 @@ namespace Tamagotchi.Core.UI
             return option;
         }
 
-        public static void OptionSelection(int op, Player player)
+        public static void OptionSelection(int op, Player player, Item meal, Item snack)
         {
             switch (op)
             {
@@ -171,7 +171,7 @@ namespace Tamagotchi.Core.UI
                     Sleep(player);
                     return;
                 case 3:
-                    Play(player);
+                    Play(player, meal, snack);
                     return;
                 case 4:
                     Console.WriteLine(Exit_MSG);
@@ -276,15 +276,24 @@ namespace Tamagotchi.Core.UI
             player.Pet.Sleep();
         }
 
-        public static void Play(Player player)
+        public static void Play(Player player, Item meal, Item snack)
         {
             Random rand = new Random();
             int op;
             if(player.Pet.Emotion == Emotions.Happy)
             {
+                op = rand.Next(1, 3);
                 Console.WriteLine(Play_MSG, player.Pet.Name);
                 player.Pet.Play();
-                Console.WriteLine(Key_MSG);
+                if(op == 1)
+                {
+                    player.InventoryAdd(meal);
+                }
+                else
+                {
+                    player.InventoryAdd(snack);
+                }
+                    Console.WriteLine(Key_MSG);
                 Console.ReadKey();
             }
             else if (player.Pet.Emotion == Emotions.Angry)
@@ -310,8 +319,17 @@ namespace Tamagotchi.Core.UI
                 }
                 else
                 {
+                    op = rand.Next(1, 3);
                     Console.WriteLine(Play_MSG, player.Pet.Name);
                     player.Pet.Play();
+                    if (op == 1)
+                    {
+                        player.InventoryAdd(meal);
+                    }
+                    else
+                    {
+                        player.InventoryAdd(snack);
+                    }
                 }
                 Console.WriteLine(Key_MSG);
                 Console.ReadKey();
