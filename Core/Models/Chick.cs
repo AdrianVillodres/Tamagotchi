@@ -8,7 +8,7 @@ namespace Tamagotchi.Core.Models
 {
     public class Chick : APet
     {
-        public Chick(string name, Emotions emotion, Stats stats) : base(name, emotion, stats)
+        public Chick(string name, Stats stats) : base(name, stats)
         {
 
         }

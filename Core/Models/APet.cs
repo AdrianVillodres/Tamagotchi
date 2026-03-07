@@ -17,10 +17,9 @@ namespace Tamagotchi.Core.Models
 
         public int SnackCount { get; set; }
 
-        protected APet(string name, Emotions emotion, Stats stats)
+        protected APet(string name, Stats stats)
         {
             Name = name;
-            Emotion = emotion;
             Stats = stats;
             SnackCount = 0;
         }
@@ -28,16 +27,41 @@ namespace Tamagotchi.Core.Models
         public void Eat(Item item)
         {
             Stats.Starve += (int)item.Type.TypeFood;
+            UpdateEmotion();
         }
 
         public void Play()
         {
             Stats.Energy -= EnergyConsumed;
+            Emotion = Emotions.Happy;
+            UpdateEmotion();
         }
 
         public void Sleep()
         {
             Stats.Energy += EnergyHealed;
+            UpdateEmotion();
+        }
+        private void UpdateEmotion()
+        {
+            if (Stats.Health <= 20)
+            {
+                Emotion = Emotions.Sick;
+            }
+            else if (Stats.Energy <= 30)
+            {
+                Emotion = Emotions.Tired;
+            }
+            else if (Stats.Starve <= 50)
+            {
+                Emotion = Emotions.Angry;
+            }
+            else
+            {
+                Emotion = Emotions.Happy;
+            }
         }
     }
 }
+    
+
