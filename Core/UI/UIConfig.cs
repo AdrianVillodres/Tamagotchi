@@ -14,6 +14,16 @@ namespace Tamagotchi.Core.UI
         const string Exit_MSG = "Bye, exiting game...";
         const string Eat_MSG = "Waht do you want to feed the pet?: 1-Meal, 2-Snack";
         const string Key_MSG = "Press a key to continue";
+        const string NoMeal_MSG = "No meal available in inventory!";
+        const string NoSnack_MSG = "No snack available in inventory!";
+        const string ItemGive_MSG = "{0} given to pet!";
+        const string Play_MSG = "{0} plays with you!";
+        const string Angry_MSG = "{0} is angry and bites you";
+        const string Sleep_MSG = "{0} is tired and falls asleep";
+        const string Sad_MSG = "{0} is sad and doesn't want to play";
+        const string Sick_MSG = "You need to vaccinate {0}";
+        const string Vaccinate_MSG = "You want to vaccinate {0}?";
+        const string Ignore_MSG = "{0}, is ignoring you";
         const int MinMenuValue = 1;
         const int MaxMenuValue = 4;
         const int MinEatValue = 1;
@@ -161,7 +171,7 @@ namespace Tamagotchi.Core.UI
                     Sleep(player);
                     return;
                 case 3:
-                    //Play
+                    Play(player);
                     return;
                 case 4:
                     Console.WriteLine(Exit_MSG);
@@ -212,14 +222,14 @@ namespace Tamagotchi.Core.UI
                             player.Pet.Eat(item);
                             player.Inventory.items[j] = null;
                             player.Pet.SnackCount = 0;
-                            Console.WriteLine($"{item.Name} given to pet!");
+                            Console.WriteLine(ItemGive_MSG, item.Name);
                             foundMeal = true;
                             break;
                         }
                     }
 
                     if (!foundMeal)
-                        Console.WriteLine("No Meal available in inventory!");
+                        Console.WriteLine(NoMeal_MSG);
                     break;
 
                 case 2:
@@ -241,7 +251,7 @@ namespace Tamagotchi.Core.UI
                                 player.Pet.Emotion = Emotions.Sick;
 
                             player.Inventory.items[i] = null;
-                            Console.WriteLine($"{item.Name} given to pet!");
+                            Console.WriteLine(ItemGive_MSG, item.Name);
                             foundSnack = true;
                         }
 
@@ -249,11 +259,11 @@ namespace Tamagotchi.Core.UI
                     }
 
                     if (!foundSnack)
-                        Console.WriteLine("No Snack available in inventory!");
+                        Console.WriteLine(NoSnack_MSG);
                     break;
 
                 default:
-                    Console.WriteLine("Invalid option.");
+                    Console.WriteLine(Option_ErrorMSG, MinEatValue, MaxEatValue);
                     break;
             }
 
@@ -264,6 +274,58 @@ namespace Tamagotchi.Core.UI
         public static void Sleep(Player player)
         {
             player.Pet.Sleep();
+        }
+
+        public static void Play(Player player)
+        {
+            Random rand = new Random();
+            int op;
+            if(player.Pet.Emotion == Emotions.Happy)
+            {
+                Console.WriteLine(Play_MSG, player.Pet.Name);
+                player.Pet.Play();
+                Console.WriteLine(Key_MSG);
+                Console.ReadKey();
+            }
+            else if (player.Pet.Emotion == Emotions.Angry)
+            {
+                op = rand.Next(1, 3);
+                if(op == 1)
+                {
+                    Console.WriteLine(Angry_MSG, player.Pet.Name);             
+                }
+                else
+                {
+                    Console.WriteLine(Ignore_MSG, player.Pet.Name);
+                }
+                Console.WriteLine(Key_MSG);
+                Console.ReadKey();
+            }
+            else if(player.Pet.Emotion == Emotions.Sad)
+            {
+                op = rand.Next(1, 3);
+                if (op == 1)
+                {
+                    Console.WriteLine(Sad_MSG, player.Pet.Name);
+                }
+                else
+                {
+                    Console.WriteLine(Play_MSG, player.Pet.Name);
+                    player.Pet.Play();
+                }
+                Console.WriteLine(Key_MSG);
+                Console.ReadKey();
+            }
+            else if(player.Pet.Emotion == Emotions.Tired)
+            {
+                Console.WriteLine(Sleep_MSG, player.Pet.Name);
+                player.Pet.Sleep();
+            }
+            else if (player.Pet.Emotion == Emotions.Sick)
+            {
+                Console.WriteLine(Sick_MSG, player.Pet.Name);
+            }
+
         }
     }
 
